@@ -79,10 +79,10 @@ body {
     font-size: 4.5em;
     font-weight: 700;
     margin-bottom: 0.1em;
-    /* Removed background gradient and transparency */
-    color: #00ffff; /* Vibrant Neon Blue */
-    /* Re-added base text-shadow */
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 10px #00ffff, 0 0 20px #00ffff; /* Added neon glow */
+    /* Changed default color to a more pure vibrant blue */
+    color: #00aaff; 
+    /* Adjusted glow to match */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 10px #00aaff, 0 0 20px #00aaff; 
     padding: 0.1em 0;
     user-select: none;
     -webkit-user-select: none;
@@ -97,8 +97,21 @@ body {
 /* Individual letter spans for JS manipulation */
 .main-content h1 span {
     display: inline-block;
-    transition: text-shadow 0.2s ease-out;
+    /* Added transform-origin */
+    transform-origin: center center;
+    /* Added transform transition for smooth scaling */
+    /* Increased transition duration for color and added transform transition */
+    transition: color 0.5s ease-out, transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), text-shadow 0.3s ease-out;
     position: relative;
+}
+
+/* New Hover effect for individual letters */
+.main-content h1 span:hover {
+    transform: scale(1.1);
+    /* Enhance glow slightly on hover */
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.35), 
+                 0 0 15px currentColor, /* Use current color for glow */
+                 0 0 25px currentColor; /* Brighter glow */
 }
 
 .main-content p {
