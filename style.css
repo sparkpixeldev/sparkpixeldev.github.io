@@ -9,7 +9,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-height: 100vh;
     /* Darker Background */
-    background-color: #121212;
+    background-color: #000000; /* Black background */
     display: flex;
     flex-direction: column; /* Align main content vertically */
     justify-content: center;
@@ -33,36 +33,36 @@ body {
 .orb {
     position: absolute;
     border-radius: 50%;
-    filter: blur(90px); /* Keep blur reasonable */
-    opacity: 0.7; /* Increased opacity */
+    filter: blur(80px); /* Re-added blur for smooth orbs */
+    opacity: 0.7;
 }
 
 /* Orb variations - faster, more dynamic */
 .orb-1 { /* Pink */
     width: 450px;
     height: 450px;
-    background: radial-gradient(circle, #e94560, transparent 75%); /* Wider gradient */
+    background: radial-gradient(circle, #e94560, transparent 75%);
     top: -150px;
     left: -100px;
-    animation: float1 15s infinite alternate ease-in-out; /* Faster animation */
+    animation: float1 15s infinite alternate ease-in-out;
 }
 
 .orb-2 { /* Teal */
     width: 350px;
     height: 350px;
-    background: radial-gradient(circle, #16c79a, transparent 75%); /* Wider gradient */
+    background: radial-gradient(circle, #16c79a, transparent 75%);
     bottom: -100px;
     right: -150px;
-    animation: float2 18s infinite alternate ease-in-out 0.5s; /* Faster animation + delay */
+    animation: float2 18s infinite alternate ease-in-out 0.5s;
 }
 
 .orb-3 { /* Blue */
     width: 300px;
     height: 300px;
-    background: radial-gradient(circle, #5f77f4, transparent 75%); /* Wider gradient */
+    background: radial-gradient(circle, #5f77f4, transparent 75%);
     bottom: 50px;
     left: 10%;
-    animation: float3 12s infinite alternate ease-in-out 1s; /* Faster animation + delay */
+    animation: float3 12s infinite alternate ease-in-out 1s;
 }
 
 .main-content {
@@ -78,17 +78,31 @@ body {
     font-family: 'Orbitron', sans-serif;
     font-size: 4.5em;
     font-weight: 700;
-    margin-bottom: 0.1em; /* Reduced spacing */
-    background: linear-gradient(45deg, #87cefa, #5f77f4, #e94560);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 0.1em;
+    /* Removed background gradient and transparency */
+    color: #00ffff; /* Vibrant Neon Blue */
+    /* Re-added base text-shadow */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 10px #00ffff, 0 0 20px #00ffff; /* Added neon glow */
     padding: 0.1em 0;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    cursor: default;
+    position: relative; /* Needed for pseudo-element */
+    /* Add transition for hover effect if needed later */
+    transition: color 0.3s ease;
+}
+
+/* Individual letter spans for JS manipulation */
+.main-content h1 span {
+    display: inline-block;
+    transition: text-shadow 0.2s ease-out;
+    position: relative;
 }
 
 .main-content p {
-    margin-bottom: 1.5em; /* Reduced spacing */
+    margin-bottom: 1.5em;
     font-size: 1.2em;
     color: #b0b0b0;
 }
@@ -108,12 +122,12 @@ body {
 
 /* Project Card Style - Enhanced Glass */
 .project-card {
-    background: rgba(255, 255, 255, 0.09); /* Slightly more opaque */
-    backdrop-filter: blur(16px); /* Increased blur */
+    background: rgba(255, 255, 255, 0.09);
+    backdrop-filter: blur(16px); /* Blurs the now-blurry orbs behind it */
     -webkit-backdrop-filter: blur(16px);
     padding: 0;
     border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.12); /* Slightly more visible border */
+    border: 1px solid rgba(255, 255, 255, 0.12);
     box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
     text-align: center;
     width: 280px;
@@ -142,7 +156,19 @@ body {
 .project-card:hover {
     transform: translateY(-10px) scale(1.03);
     background: rgba(255, 255, 255, 0.12);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(95, 119, 244, 0.5); /* Enhanced shadow/glow */
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(95, 119, 244, 0.5);
+}
+
+/* Logo Shake Animation */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-2px) rotate(-0.5deg); }
+  50% { transform: translateX(2px) rotate(0.5deg); }
+  75% { transform: translateX(-1px) rotate(-0.3deg); }
+}
+
+.shake {
+  animation: shake 0.4s ease-in-out;
 }
 
 /* Keyframe Animations - More Dynamic */
