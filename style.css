@@ -1,0 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    /* Updated Background: Dark Gray */
+    background-color: #1f1f1f;
+    /* Keep the gradient in background orbs, remove from body */
+    /* background: linear-gradient(to bottom right, #1a1a2e, #16213e, #0f3460); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Prevents scrollbars from animated orbs */
+    position: relative; /* Needed for absolute positioning of orbs */
+    color: #e0e0e0; /* Default light text color */
+    padding: 2rem; /* Add some padding to prevent content touching edges */
+}
+
+.orb-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Behind the main content */
+    overflow: hidden; /* Clip orbs if necessary */
+}
+
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px); /* Slightly more blur */
+    opacity: 0.5; /* Slightly less opacity */
+}
+
+/* Orb variations (keeping existing colors/animations) */
+.orb-1 {
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, #e94560, transparent 70%);
+    top: -150px;
+    left: -100px;
+    animation: float1 25s infinite alternate ease-in-out;
+}
+
+.orb-2 {
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, #16c79a, transparent 70%);
+    bottom: -100px;
+    right: -150px;
+    animation: float2 30s infinite alternate ease-in-out 1s; /* Add delay */
+}
+
+.orb-3 {
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, #5f77f4, transparent 70%);
+    bottom: 50px;
+    left: 10%;
+    animation: float3 20s infinite alternate ease-in-out 0.5s; /* Add delay */
+}
+
+.main-content {
+    text-align: center;
+    z-index: 1; /* Ensure it's above the orbs */
+    position: relative; /* Keeps it layered correctly */
+    width: 100%;
+    max-width: 900px; /* Max width for the content area */
+}
+
+.main-content h1 {
+    font-size: 2.8em;
+    margin-bottom: 0.5em;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.main-content p {
+    margin-bottom: 2em;
+    font-size: 1.2em;
+    color: #d0d0d0;
+}
+
+.projects-grid {
+    display: flex;
+    justify-content: center; /* Center items horizontally */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 2rem; /* Space between cards */
+}
+
+/* Make the link wrapper behave like a block */
+.project-card-link {
+    display: block;
+    text-decoration: none; /* Remove underline from link */
+    color: inherit; /* Inherit text color */
+}
+
+/* Project Card Style (previously .glass-container) */
+.project-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    padding: 1.5rem 2rem;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 300px; /* Fixed width for consistency */
+    overflow: hidden; /* Ensure content respects border-radius */
+    position: relative; /* Needed for pseudo-elements or complex effects if added */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; /* Smooth transitions for hover */
+}
+
+.project-card h2 {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.project-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px; /* Slightly rounded corners for the image */
+    margin-top: 0.5em;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border for image */
+}
+
+/* Card Hover Animation */
+.project-card:hover {
+    transform: translateY(-10px) scale(1.03); /* Lift and slightly enlarge */
+    background: rgba(255, 255, 255, 0.12); /* Slightly brighter background */
+    /* Enhanced shadow + subtle glow (using project color vibes) */
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(95, 119, 244, 0.3); /* Base shadow + blue orb glow */
+}
+
+
+/* Keyframe Animations (Unchanged) */
+@keyframes float1 {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(80px, 120px) scale(1.05); }
+    100% { transform: translate(-20px, -30px) scale(1); }
+}
+
+@keyframes float2 {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-100px, -60px) scale(0.95); }
+    100% { transform: translate(30px, 40px) scale(1); }
+}
+
+@keyframes float3 {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(50px, -100px) scale(1.1); }
+    100% { transform: translate(-40px, 20px) scale(1); }
+} 
