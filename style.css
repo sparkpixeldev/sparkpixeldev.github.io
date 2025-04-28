@@ -5,19 +5,19 @@
 }
 
 body {
+    /* Use Orbitron globally, fallback to sans-serif */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-height: 100vh;
-    /* Updated Background: Dark Gray */
-    background-color: #1f1f1f;
-    /* Keep the gradient in background orbs, remove from body */
-    /* background: linear-gradient(to bottom right, #1a1a2e, #16213e, #0f3460); */
+    /* Darker Background */
+    background-color: #121212;
     display: flex;
+    flex-direction: column; /* Align main content vertically */
     justify-content: center;
     align-items: center;
-    overflow: hidden; /* Prevents scrollbars from animated orbs */
-    position: relative; /* Needed for absolute positioning of orbs */
-    color: #e0e0e0; /* Default light text color */
-    padding: 2rem; /* Add some padding to prevent content touching edges */
+    overflow: hidden;
+    position: relative;
+    color: #e0e0e0;
+    padding: 2rem;
 }
 
 .orb-container {
@@ -26,135 +26,146 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0; /* Behind the main content */
-    overflow: hidden; /* Clip orbs if necessary */
+    z-index: 0;
+    overflow: hidden;
 }
 
 .orb {
     position: absolute;
     border-radius: 50%;
-    filter: blur(90px); /* Slightly more blur */
-    opacity: 0.5; /* Slightly less opacity */
+    filter: blur(90px); /* Keep blur reasonable */
+    opacity: 0.7; /* Increased opacity */
 }
 
-/* Orb variations (keeping existing colors/animations) */
-.orb-1 {
+/* Orb variations - faster, more dynamic */
+.orb-1 { /* Pink */
     width: 450px;
     height: 450px;
-    background: radial-gradient(circle, #e94560, transparent 70%);
+    background: radial-gradient(circle, #e94560, transparent 75%); /* Wider gradient */
     top: -150px;
     left: -100px;
-    animation: float1 25s infinite alternate ease-in-out;
+    animation: float1 15s infinite alternate ease-in-out; /* Faster animation */
 }
 
-.orb-2 {
+.orb-2 { /* Teal */
     width: 350px;
     height: 350px;
-    background: radial-gradient(circle, #16c79a, transparent 70%);
+    background: radial-gradient(circle, #16c79a, transparent 75%); /* Wider gradient */
     bottom: -100px;
     right: -150px;
-    animation: float2 30s infinite alternate ease-in-out 1s; /* Add delay */
+    animation: float2 18s infinite alternate ease-in-out 0.5s; /* Faster animation + delay */
 }
 
-.orb-3 {
-    width: 250px;
-    height: 250px;
-    background: radial-gradient(circle, #5f77f4, transparent 70%);
+.orb-3 { /* Blue */
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, #5f77f4, transparent 75%); /* Wider gradient */
     bottom: 50px;
     left: 10%;
-    animation: float3 20s infinite alternate ease-in-out 0.5s; /* Add delay */
+    animation: float3 12s infinite alternate ease-in-out 1s; /* Faster animation + delay */
 }
 
 .main-content {
     text-align: center;
-    z-index: 1; /* Ensure it's above the orbs */
-    position: relative; /* Keeps it layered correctly */
+    z-index: 1;
+    position: relative;
     width: 100%;
-    max-width: 900px; /* Max width for the content area */
+    max-width: 900px;
 }
 
+/* Logo Styling */
 .main-content h1 {
-    font-size: 2.8em;
-    margin-bottom: 0.5em;
-    color: #ffffff;
-    font-weight: 600;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 4.5em;
+    font-weight: 700;
+    margin-bottom: 0.1em; /* Reduced spacing */
+    background: linear-gradient(45deg, #87cefa, #5f77f4, #e94560);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    padding: 0.1em 0;
 }
 
 .main-content p {
-    margin-bottom: 2em;
+    margin-bottom: 1.5em; /* Reduced spacing */
     font-size: 1.2em;
-    color: #d0d0d0;
+    color: #b0b0b0;
 }
 
 .projects-grid {
     display: flex;
-    justify-content: center; /* Center items horizontally */
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
-    gap: 2rem; /* Space between cards */
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
 }
 
-/* Make the link wrapper behave like a block */
 .project-card-link {
     display: block;
-    text-decoration: none; /* Remove underline from link */
-    color: inherit; /* Inherit text color */
+    text-decoration: none;
+    color: inherit;
 }
 
-/* Project Card Style (previously .glass-container) */
+/* Project Card Style - Enhanced Glass */
 .project-card {
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px); /* Safari support */
-    padding: 1.5rem 2rem;
+    background: rgba(255, 255, 255, 0.09); /* Slightly more opaque */
+    backdrop-filter: blur(16px); /* Increased blur */
+    -webkit-backdrop-filter: blur(16px);
+    padding: 0;
     border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.12); /* Slightly more visible border */
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
     text-align: center;
-    width: 300px; /* Fixed width for consistency */
-    overflow: hidden; /* Ensure content respects border-radius */
-    position: relative; /* Needed for pseudo-elements or complex effects if added */
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; /* Smooth transitions for hover */
-}
-
-.project-card h2 {
-    font-size: 1.5em;
-    margin-bottom: 1em;
-    color: #ffffff;
-    font-weight: 500;
+    width: 280px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
 .project-card img {
-    max-width: 100%;
+    width: 100%;
     height: auto;
-    border-radius: 8px; /* Slightly rounded corners for the image */
-    margin-top: 0.5em;
-    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border for image */
+    display: block;
+}
+
+.project-card h2 {
+    font-size: 1.4em;
+    color: #ffffff;
+    font-weight: 500;
+    padding: 1em 1em 1.2em 1em;
+    margin: 0;
 }
 
 /* Card Hover Animation */
 .project-card:hover {
-    transform: translateY(-10px) scale(1.03); /* Lift and slightly enlarge */
-    background: rgba(255, 255, 255, 0.12); /* Slightly brighter background */
-    /* Enhanced shadow + subtle glow (using project color vibes) */
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(95, 119, 244, 0.3); /* Base shadow + blue orb glow */
+    transform: translateY(-10px) scale(1.03);
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(95, 119, 244, 0.5); /* Enhanced shadow/glow */
 }
 
-
-/* Keyframe Animations (Unchanged) */
+/* Keyframe Animations - More Dynamic */
 @keyframes float1 {
     0% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(80px, 120px) scale(1.05); }
+    25% { transform: translate(40px, 60px) scale(1.02); }
+    50% { transform: translate(-30px, 120px) scale(1.05); }
+    75% { transform: translate(50px, 80px) scale(1.03); }
     100% { transform: translate(-20px, -30px) scale(1); }
 }
 
 @keyframes float2 {
     0% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(-100px, -60px) scale(0.95); }
+    25% { transform: translate(-50px, -30px) scale(0.98); }
+    50% { transform: translate(-100px, 60px) scale(0.95); }
+    75% { transform: translate(-40px, 20px) scale(0.97); }
     100% { transform: translate(30px, 40px) scale(1); }
 }
 
 @keyframes float3 {
     0% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(50px, -100px) scale(1.1); }
+    25% { transform: translate(25px, -50px) scale(1.05); }
+    50% { transform: translate(-30px, -100px) scale(1.1); }
+    75% { transform: translate(40px, -60px) scale(1.08); }
     100% { transform: translate(-40px, 20px) scale(1); }
 } 
