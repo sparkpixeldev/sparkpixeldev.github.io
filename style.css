@@ -14,7 +14,6 @@ body {
     flex-direction: column; /* Align main content vertically */
     justify-content: center;
     align-items: center;
-    overflow: hidden;
     position: relative;
     color: #e0e0e0;
     padding: 2rem;
@@ -213,4 +212,113 @@ body {
     50% { transform: translate(-30px, -100px) scale(1.1); }
     75% { transform: translate(40px, -60px) scale(1.08); }
     100% { transform: translate(-40px, 20px) scale(1); }
+}
+
+/* --- Responsive Design --- */
+
+@media (max-width: 768px) {
+    body {
+        padding: 1rem; /* Reduce padding on smaller screens */
+        /* Ensure scrolling is allowed on mobile too */
+        overflow: auto; /* Or visible, depending on desired behavior */
+    }
+
+    .main-content h1 {
+        font-size: 3em; /* Decrease heading size */
+    }
+
+    .main-content p {
+        font-size: 1em; /* Adjust paragraph font size */
+    }
+
+    .projects-grid {
+        gap: 1rem; /* Reduce gap between cards */
+        justify-content: center; /* Ensure cards are centered */
+    }
+
+    .project-card {
+        /* Set a fixed width instead of percentage */
+        width: 280px; 
+        /* Removed max-width as width is now fixed */
+        /* Ensure blur works correctly on mobile */
+        background: rgba(255, 255, 255, 0.15); /* Slightly increase opacity for visibility */
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    /* Apply smaller screen styles here for consistency */
+    .project-card h2 {
+        font-size: 1.2em; /* Consistent card title size */
+        min-height: 4em; /* Consistent min-height */
+        padding: 0.8em; /* Consistent padding */
+    }
+
+    .project-card img {
+        height: 150px; /* Consistent image height */
+    }
+
+    .project-card:hover {
+        /* Adjust hover effect for mobile if needed, or disable */
+        transform: none; /* Disable hover transform on smaller screens */
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25); /* Keep base shadow */
+    }
+
+    /* Adjust Orbs for smaller screens */
+    .orb {
+        filter: blur(60px); /* Reduce blur slightly */
+        opacity: 0.6;
+    }
+    .orb-1 {
+        width: 300px;
+        height: 300px;
+        top: -100px;
+        left: -50px;
+        animation-duration: 18s; /* Slow down animation slightly */
+    }
+    .orb-2 {
+        width: 250px;
+        height: 250px;
+        bottom: -80px;
+        right: -100px;
+        animation-duration: 20s;
+    }
+    .orb-3 {
+        width: 200px;
+        height: 200px;
+        bottom: 20px;
+        left: 5%;
+        animation-duration: 15s;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-content h1 {
+        font-size: 2.5em; /* Further decrease heading size */
+    }
+
+    /* Card dimensions are now handled by the 768px media query */
+    /* Remove redundant/overriding styles for consistency */
+    /* .project-card h2 { ... } */
+    /* .project-card img { ... } */
+
+     /* Further adjust Orbs for very small screens */
+    .orb {
+        filter: blur(40px);
+        opacity: 0.5;
+    }
+    .orb-1 {
+        width: 250px;
+        height: 250px;
+        top: -80px;
+    }
+    .orb-2 {
+        width: 200px;
+        height: 200px;
+        bottom: -60px;
+        right: -80px;
+    }
+    .orb-3 {
+        width: 150px;
+        height: 150px;
+    }
 } 
